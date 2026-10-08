@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Lídia Rodrigues — Product Design & UX for AI</title>
+<meta name="description" content="Portfólio de Product Design com foco em experiências com IA generativa. Estudos conceituais de UX for AI." />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,400&family=Figtree:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --bg: #faf7f2;
+    --ink: #1a1714;
+    --muted: #6b645c;
+    --line: #e4ddd2;
+    --accent: #c4542a;
+    --accent-soft: #f0e3d8;
+    --card: #ffffff;
+    --max: 1040px;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font-family: "Figtree", system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+  .wrap { max-width: var(--max); margin: 0 auto; padding: 0 28px; }
+  .display { font-family: "Fraunces", Georgia, serif; font-weight: 500; letter-spacing: -0.01em; line-height: 1.05; }
+
+  /* ---------- HERO ---------- */
+  header.hero { padding: 92px 0 56px; border-bottom: 1px solid var(--line); }
+  .eyebrow {
+    font-size: 13px; letter-spacing: 0.18em; text-transform: uppercase;
+    color: var(--accent); font-weight: 600; margin-bottom: 22px;
+  }
+  .hero h1 { font-size: clamp(42px, 7vw, 76px); max-width: 15ch; }
+  .hero h1 em { font-style: italic; color: var(--accent); }
+  .hero p.lead { margin-top: 26px; max-width: 54ch; font-size: 19px; color: var(--muted); }
+  .contact { margin-top: 34px; display: flex; flex-wrap: wrap; gap: 10px 14px; align-items: center; }
+  .contact a {
+    display: inline-flex; align-items: center; gap: 7px;
+    text-decoration: none; color: var(--ink); font-weight: 500; font-size: 15px;
+    border: 1px solid var(--line); background: var(--card);
+    padding: 9px 16px; border-radius: 999px; transition: all .18s ease;
+  }
+  .contact a:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+
+  /* ---------- SECTION HEADS ---------- */
+  .section { padding: 72px 0; border-bottom: 1px solid var(--line); }
+  .section-label {
+    font-size: 13px; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--muted); font-weight: 600; margin-bottom: 10px;
+  }
+
+  /* ---------- CASE ---------- */
+  .case { padding: 64px 0; border-bottom: 1px solid var(--line); }
+  .case:last-child { border-bottom: none; }
+  .case-tag {
+    display: inline-block; font-size: 12px; letter-spacing: 0.1em; text-transform: uppercase;
+    color: var(--accent); background: var(--accent-soft);
+    padding: 5px 12px; border-radius: 999px; font-weight: 600; margin-bottom: 20px;
+  }
+  .case h2 { font-size: clamp(28px, 4.2vw, 42px); max-width: 20ch; }
+  .case-sub { margin-top: 14px; color: var(--muted); max-width: 58ch; font-size: 18px; }
+
+  /* placeholder de imagem (trocar por print do Figma) */
+  .shot {
+    margin: 36px 0 8px; border: 1.5px dashed var(--line); border-radius: 16px;
+    background:
+      repeating-linear-gradient(45deg, #fff, #fff 14px, #faf7f2 14px, #faf7f2 28px);
+    min-height: 300px; display: flex; align-items: center; justify-content: center;
+    text-align: center; padding: 28px;
+  }
+  .shot span { color: var(--muted); font-size: 14px; max-width: 42ch; }
+  .shot b { color: var(--accent); display: block; margin-bottom: 6px; font-weight: 600; letter-spacing: 0.04em; text-transform: uppercase; font-size: 12px; }
+  .shot img { width: 100%; border-radius: 14px; display: block; }
+  .shot.filled { border: 1px solid var(--line); background: #fff; padding: 20px; min-height: 0; }
+  .shot.filled svg { width: 100%; height: auto; display: block; }
+
+  /* blocos de detalhe */
+  .detail { display: grid; grid-template-columns: repeat(2, 1fr); gap: 30px 44px; margin-top: 40px; }
+  .detail .block h3 {
+    font-size: 13px; letter-spacing: 0.14em; text-transform: uppercase;
+    color: var(--ink); font-weight: 700; margin-bottom: 10px;
+  }
+  .detail .block p { color: var(--muted); }
+  .detail .block ul { color: var(--muted); padding-left: 18px; }
+  .detail .block li { margin-bottom: 6px; }
+  .full { grid-column: 1 / -1; }
+
+  /* ---------- SKILLS ---------- */
+  .chips { display: flex; flex-wrap: wrap; gap: 9px; margin-top: 8px; }
+  .chip {
+    font-size: 14px; padding: 7px 14px; border-radius: 999px;
+    background: var(--card); border: 1px solid var(--line); color: var(--ink);
+  }
+  .skillgroup { margin-top: 26px; }
+  .skillgroup h4 { font-size: 13px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; font-weight: 600; }
+
+  /* ---------- FOOTER ---------- */
+  footer { padding: 72px 0 96px; text-align: center; }
+  footer h2 { font-size: clamp(28px, 4.5vw, 46px); }
+  footer p { color: var(--muted); margin-top: 14px; }
+  footer .contact { justify-content: center; }
+
+  .note { font-size: 13px; color: var(--muted); font-style: italic; margin-top: 18px; }
+
+  @media (max-width: 680px) {
+    .detail { grid-template-columns: 1fr; }
+    header.hero { padding: 64px 0 40px; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <div class="eyebrow">Product Design · UX for AI</div>
+    <h1 class="display">Desenho experiências com IA que são <em>simples, transparentes e confiáveis.</em></h1>
+    <p class="lead">Product Designer com foco em experiências de IA generativa. Transformo necessidades de usuários e oportunidades de negócio em fluxos, protótipos e interfaces claras. Os projetos abaixo são estudos conceituais, criados para explorar problemas comuns de produto.</p>
+    <div class="contact">
+      <a href="mailto:analidia33alr@gmail.com">✉ analidia33alr@gmail.com</a>
+      <a href="https://www.linkedin.com/in/lidia-rodrigues-847426268" target="_blank" rel="noopener">in LinkedIn</a>
+    </div>
+  </div>
+</header>
+
+<!-- SOBRE / ABORDAGEM -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Abordagem</div>
+    <p style="max-width:62ch; font-size:19px;">Trabalho de ponta a ponta: <strong>discovery</strong> (pesquisa, entrevistas, jornadas), <strong>ideação</strong>, <strong>prototipação</strong> em Figma e <strong>validação</strong> por testes e métricas. Em experiências com IA, meu foco é desenhar <strong>transparência, previsibilidade e controle</strong> para a pessoa usuária, cuidando especialmente dos estados de carregamento, incerteza e erro.</p>
+  </div>
+</section>
+
+<!-- CASES -->
+<main class="wrap">
+
+  <!-- CASE 1 -->
+  <article class="case">
+    <span class="case-tag">Projeto conceito · UX for AI</span>
+    <h2 class="display">Copiloto de IA num app de produtividade</h2>
+    <p class="case-sub">Um assistente que resume conversas longas e ajuda a redigir respostas, sem tirar o controle da pessoa.</p>
+
+    <div class="shot filled">
+      <svg viewBox="0 0 1000 560" xmlns="http://www.w3.org/2000/svg" font-family="Figtree, system-ui, sans-serif">
+        <rect x="8" y="8" width="984" height="544" rx="18" fill="#ffffff" stroke="#e4ddd2"/>
+        <circle cx="40" cy="40" r="6" fill="#e4ddd2"/><circle cx="60" cy="40" r="6" fill="#e4ddd2"/><circle cx="80" cy="40" r="6" fill="#e4ddd2"/>
+        <line x1="8" y1="64" x2="992" y2="64" stroke="#e4ddd2"/>
+        <!-- inbox -->
+        <text x="40" y="104" font-size="15" font-weight="700" fill="#1a1714">Caixa de entrada</text>
+        <g>
+          <rect x="36" y="124" width="368" height="64" rx="10" fill="#f0e3d8"/>
+          <circle cx="66" cy="156" r="14" fill="#c4542a" opacity="0.25"/>
+          <rect x="92" y="142" width="150" height="10" rx="5" fill="#1a1714" opacity="0.65"/>
+          <rect x="92" y="162" width="250" height="8" rx="4" fill="#6b645c" opacity="0.45"/>
+        </g>
+        <g fill="#6b645c">
+          <rect x="36" y="200" width="368" height="64" rx="10" fill="#faf7f2"/>
+          <circle cx="66" cy="232" r="14" fill="#6b645c" opacity="0.18"/>
+          <rect x="92" y="218" width="130" height="10" rx="5" opacity="0.55"/>
+          <rect x="92" y="238" width="230" height="8" rx="4" opacity="0.35"/>
+          <rect x="36" y="276" width="368" height="64" rx="10" fill="#faf7f2"/>
+          <circle cx="66" cy="308" r="14" fill="#6b645c" opacity="0.18"/>
+          <rect x="92" y="294" width="160" height="10" rx="5" opacity="0.55"/>
+          <rect x="92" y="314" width="200" height="8" rx="4" opacity="0.35"/>
+        </g>
+        <!-- copiloto panel -->
+        <rect x="432" y="92" width="536" height="436" rx="14" fill="#faf7f2" stroke="#e4ddd2"/>
+        <path d="M432 106 a14 14 0 0 1 14 -14 h508 a14 14 0 0 1 14 14 v34 h-536 z" fill="#f0e3d8"/>
+        <text x="458" y="124" font-size="14" font-weight="700" fill="#c4542a">✦ Copiloto</text>
+        <!-- resumo -->
+        <rect x="454" y="158" width="492" height="118" rx="10" fill="#ffffff" stroke="#e4ddd2"/>
+        <text x="474" y="184" font-size="11" letter-spacing="1" font-weight="700" fill="#6b645c">RESUMO DA CONVERSA</text>
+        <rect x="474" y="198" width="452" height="9" rx="4.5" fill="#1a1714" opacity="0.55"/>
+        <rect x="474" y="216" width="452" height="9" rx="4.5" fill="#1a1714" opacity="0.55"/>
+        <rect x="474" y="234" width="300" height="9" rx="4.5" fill="#1a1714" opacity="0.4"/>
+        <!-- loading -->
+        <rect x="454" y="290" width="492" height="30" rx="8" fill="#f0e3d8"/>
+        <circle cx="476" cy="305" r="5" fill="#c4542a"><animate attributeName="opacity" values="1;0.3;1" dur="1s" repeatCount="indefinite"/></circle>
+        <text x="492" y="310" font-size="12" fill="#c4542a" font-weight="600">Gerando sugestão de resposta...</text>
+        <!-- rascunho -->
+        <rect x="454" y="334" width="492" height="138" rx="10" fill="#ffffff" stroke="#e4ddd2"/>
+        <text x="474" y="360" font-size="11" letter-spacing="1" font-weight="700" fill="#6b645c">RASCUNHO (VOCÊ REVISA ANTES DE ENVIAR)</text>
+        <rect x="474" y="374" width="452" height="9" rx="4.5" fill="#1a1714" opacity="0.45"/>
+        <rect x="474" y="392" width="452" height="9" rx="4.5" fill="#1a1714" opacity="0.45"/>
+        <rect x="474" y="410" width="360" height="9" rx="4.5" fill="#1a1714" opacity="0.35"/>
+        <rect x="692" y="430" width="110" height="30" rx="8" fill="#ffffff" stroke="#c4542a"/>
+        <text x="747" y="450" font-size="12" font-weight="600" fill="#c4542a" text-anchor="middle">Editar</text>
+        <rect x="814" y="430" width="112" height="30" rx="8" fill="#c4542a"/>
+        <text x="870" y="450" font-size="12" font-weight="600" fill="#ffffff" text-anchor="middle">Enviar</text>
+      </svg>
+    </div>
+
+    <div class="detail">
+      <div class="block"><h3>Contexto</h3><p>Pessoas perdem tempo lendo e respondendo mensagens longas. Explorei um copiloto de IA que resume conversas e sugere respostas dentro de um app de produtividade genérico.</p></div>
+      <div class="block"><h3>Desafio</h3><p>Como acelerar o trabalho com IA generativa sem tirar o controle da pessoa, e deixando claro quando a IA pode errar?</p></div>
+      <div class="block"><h3>Meu papel</h3><p>Pesquisa de referências, definição do fluxo, wireframes e protótipo de alta fidelidade em Figma.</p></div>
+      <div class="block"><h3>Processo</h3><ul><li>Mapeei as tarefas repetitivas (ler threads, responder, priorizar).</li><li>Desenhei o fluxo: resumir, revisar, gerar rascunho, editar, enviar.</li><li>Decisões de UX for AI: revisão humana antes do envio, estados de carregamento e erro, aviso de incerteza e botão de desfazer.</li></ul></div>
+      <div class="block full"><h3>Solução</h3><p>Um painel de copiloto integrado: resumo da conversa, sugestões de resposta editáveis, tom ajustável e confirmação humana antes de qualquer envio. A IA sugere, a pessoa decide.</p></div>
+      <div class="block full"><h3>Reflexão</h3><p>IA que sugere e deixa a decisão com o usuário gera mais confiança do que IA que age sozinha. Projetar o controle foi o aprendizado central.</p></div>
+    </div>
+  </article>
+
+  <!-- CASE 2 -->
+  <article class="case">
+    <span class="case-tag">Projeto conceito · Onboarding</span>
+    <h2 class="display">Redesenho de onboarding de um app mobile</h2>
+    <p class="case-sub">A primeira experiência decide se a pessoa fica ou desiste. Foco em clareza e redução de abandono.</p>
+
+    <div class="shot filled">
+      <svg viewBox="0 0 1000 520" xmlns="http://www.w3.org/2000/svg" font-family="Figtree, system-ui, sans-serif">
+        <!-- phone 1: boas-vindas -->
+        <g>
+          <rect x="60" y="40" width="260" height="440" rx="30" fill="#ffffff" stroke="#e4ddd2"/>
+          <rect x="150" y="56" width="80" height="12" rx="6" fill="#e4ddd2"/>
+          <circle cx="190" cy="180" r="56" fill="#f0e3d8"/>
+          <path d="M172 180 l12 12 l24 -26" stroke="#c4542a" stroke-width="6" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="190" y="280" font-size="18" font-weight="700" fill="#1a1714" text-anchor="middle">Bem-vinda</text>
+          <text x="190" y="306" font-size="12" fill="#6b645c" text-anchor="middle">Vamos começar em 1 minuto</text>
+          <rect x="92" y="400" width="196" height="40" rx="20" fill="#c4542a"/>
+          <text x="190" y="425" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Começar</text>
+          <circle cx="174" cy="462" r="4" fill="#c4542a"/><circle cx="190" cy="462" r="4" fill="#e4ddd2"/><circle cx="206" cy="462" r="4" fill="#e4ddd2"/>
+        </g>
+        <!-- phone 2: momento de valor -->
+        <g>
+          <rect x="370" y="40" width="260" height="440" rx="30" fill="#ffffff" stroke="#e4ddd2"/>
+          <rect x="460" y="56" width="80" height="12" rx="6" fill="#e4ddd2"/>
+          <text x="500" y="118" font-size="16" font-weight="700" fill="#1a1714" text-anchor="middle">Veja o que você ganha</text>
+          <g>
+            <rect x="398" y="150" width="204" height="56" rx="12" fill="#faf7f2"/>
+            <circle cx="424" cy="178" r="12" fill="#c4542a" opacity="0.25"/><path d="M418 178 l5 5 l10 -11" stroke="#c4542a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="446" y="172" width="130" height="12" rx="6" fill="#1a1714" opacity="0.5"/>
+            <rect x="398" y="216" width="204" height="56" rx="12" fill="#faf7f2"/>
+            <circle cx="424" cy="244" r="12" fill="#c4542a" opacity="0.25"/><path d="M418 244 l5 5 l10 -11" stroke="#c4542a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="446" y="238" width="110" height="12" rx="6" fill="#1a1714" opacity="0.5"/>
+            <rect x="398" y="282" width="204" height="56" rx="12" fill="#faf7f2"/>
+            <circle cx="424" cy="310" r="12" fill="#c4542a" opacity="0.25"/><path d="M418 310 l5 5 l10 -11" stroke="#c4542a" stroke-width="3" fill="none" stroke-linecap="round"/>
+            <rect x="446" y="304" width="140" height="12" rx="6" fill="#1a1714" opacity="0.5"/>
+          </g>
+          <rect x="402" y="400" width="196" height="40" rx="20" fill="#c4542a"/>
+          <text x="500" y="425" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Continuar</text>
+          <circle cx="484" cy="462" r="4" fill="#e4ddd2"/><circle cx="500" cy="462" r="4" fill="#c4542a"/><circle cx="516" cy="462" r="4" fill="#e4ddd2"/>
+        </g>
+        <!-- phone 3: sucesso -->
+        <g>
+          <rect x="680" y="40" width="260" height="440" rx="30" fill="#ffffff" stroke="#e4ddd2"/>
+          <rect x="770" y="56" width="80" height="12" rx="6" fill="#e4ddd2"/>
+          <circle cx="810" cy="190" r="60" fill="#c4542a"/>
+          <path d="M786 190 l16 16 l32 -34" stroke="#ffffff" stroke-width="7" fill="none" stroke-linecap="round" stroke-linejoin="round"/>
+          <text x="810" y="296" font-size="18" font-weight="700" fill="#1a1714" text-anchor="middle">Tudo pronto!</text>
+          <text x="810" y="322" font-size="12" fill="#6b645c" text-anchor="middle">Sua conta está configurada</text>
+          <rect x="712" y="400" width="196" height="40" rx="20" fill="#c4542a"/>
+          <text x="810" y="425" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Explorar</text>
+          <circle cx="794" cy="462" r="4" fill="#e4ddd2"/><circle cx="810" cy="462" r="4" fill="#e4ddd2"/><circle cx="826" cy="462" r="4" fill="#c4542a"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="detail">
+      <div class="block"><h3>Contexto</h3><p>Redesenhei o onboarding de um app mobile genérico com foco em mostrar valor rápido e reduzir desistência nos primeiros minutos.</p></div>
+      <div class="block"><h3>Desafio</h3><p>Reduzir o abandono inicial sem sobrecarregar a pessoa com passos e pedidos de cadastro cedo demais.</p></div>
+      <div class="block"><h3>Meu papel</h3><p>Jornada do usuário, redesenho do fluxo, protótipo em Figma e checagem de acessibilidade (WCAG).</p></div>
+      <div class="block"><h3>Processo</h3><ul><li>Mapeei a jornada do primeiro acesso e os pontos de atrito.</li><li>Reduzi passos e priorizei o momento de valor.</li><li>Apliquei hierarquia visual, contraste, tamanho de alvo e navegação por teclado.</li></ul></div>
+      <div class="block full"><h3>Solução</h3><p>Onboarding curto com progresso visível, valor demonstrado antes do cadastro e microcopy claro em cada passo. Estados de erro e de "quase lá" pensados para não perder a pessoa.</p></div>
+      <div class="block full"><h3>Reflexão</h3><p>Menos é mais: cada passo removido do caminho aumenta a chance de a pessoa chegar ao valor do produto.</p></div>
+    </div>
+  </article>
+
+  <!-- CASE 3 -->
+  <article class="case">
+    <span class="case-tag">Projeto conceito · IA & Personalização</span>
+    <h2 class="display">Busca e recomendação com IA num e-commerce</h2>
+    <p class="case-sub">Recomendações úteis e personalizadas, com transparência sobre o porquê de cada sugestão.</p>
+
+    <div class="shot filled">
+      <svg viewBox="0 0 1000 540" xmlns="http://www.w3.org/2000/svg" font-family="Figtree, system-ui, sans-serif">
+        <rect x="8" y="8" width="984" height="524" rx="18" fill="#ffffff" stroke="#e4ddd2"/>
+        <circle cx="40" cy="40" r="6" fill="#e4ddd2"/><circle cx="60" cy="40" r="6" fill="#e4ddd2"/><circle cx="80" cy="40" r="6" fill="#e4ddd2"/>
+        <line x1="8" y1="64" x2="992" y2="64" stroke="#e4ddd2"/>
+        <!-- search bar -->
+        <rect x="40" y="90" width="920" height="52" rx="26" fill="#faf7f2" stroke="#e4ddd2"/>
+        <circle cx="72" cy="116" r="9" fill="none" stroke="#c4542a" stroke-width="3"/><line x1="79" y1="123" x2="88" y2="132" stroke="#c4542a" stroke-width="3" stroke-linecap="round"/>
+        <text x="104" y="121" font-size="15" fill="#1a1714">tênis leve para corrida à noite</text>
+        <rect x="856" y="100" width="92" height="32" rx="16" fill="#c4542a"/>
+        <text x="902" y="121" font-size="13" font-weight="600" fill="#ffffff" text-anchor="middle">Buscar</text>
+        <!-- recommendation label -->
+        <text x="40" y="186" font-size="13" font-weight="700" fill="#1a1714">Recomendado para você</text>
+        <!-- highlighted card -->
+        <rect x="40" y="200" width="290" height="300" rx="14" fill="#ffffff" stroke="#c4542a"/>
+        <rect x="40" y="200" width="290" height="150" rx="14" fill="#f0e3d8"/>
+        <rect x="56" y="216" width="150" height="22" rx="11" fill="#c4542a"/>
+        <text x="131" y="231" font-size="11" font-weight="700" fill="#ffffff" text-anchor="middle">★ RECOMENDADO</text>
+        <circle cx="185" cy="290" r="40" fill="#ffffff" opacity="0.6"/>
+        <text x="60" y="384" font-size="15" font-weight="700" fill="#1a1714">Tênis Run Lite</text>
+        <text x="60" y="406" font-size="13" fill="#c4542a" font-weight="700">R$ 329</text>
+        <rect x="56" y="424" width="258" height="56" rx="10" fill="#faf7f2"/>
+        <text x="68" y="446" font-size="11" fill="#6b645c">✦ Porque você viu "corrida"</text>
+        <text x="68" y="464" font-size="11" fill="#6b645c">e buscou modelos leves.</text>
+        <!-- other cards -->
+        <g>
+          <rect x="356" y="200" width="290" height="300" rx="14" fill="#ffffff" stroke="#e4ddd2"/>
+          <rect x="356" y="200" width="290" height="150" rx="14" fill="#faf7f2"/>
+          <text x="376" y="384" font-size="15" font-weight="700" fill="#1a1714">Tênis Trail Pro</text>
+          <text x="376" y="406" font-size="13" fill="#c4542a" font-weight="700">R$ 399</text>
+          <rect x="376" y="430" width="120" height="10" rx="5" fill="#6b645c" opacity="0.4"/>
+          <rect x="672" y="200" width="288" height="300" rx="14" fill="#ffffff" stroke="#e4ddd2"/>
+          <rect x="672" y="200" width="288" height="150" rx="14" fill="#faf7f2"/>
+          <text x="692" y="384" font-size="15" font-weight="700" fill="#1a1714">Tênis Night Air</text>
+          <text x="692" y="406" font-size="13" fill="#c4542a" font-weight="700">R$ 289</text>
+          <rect x="692" y="430" width="140" height="10" rx="5" fill="#6b645c" opacity="0.4"/>
+        </g>
+      </svg>
+    </div>
+
+    <div class="detail">
+      <div class="block"><h3>Contexto</h3><p>Estudei como a IA pode melhorar busca e recomendação num e-commerce genérico, reduzindo o esforço de encontrar o que se procura.</p></div>
+      <div class="block"><h3>Desafio</h3><p>Dar recomendações úteis sem parecer invasivo nem "mágico demais": a pessoa precisa entender por que algo foi sugerido.</p></div>
+      <div class="block"><h3>Meu papel</h3><p>Fluxo, protótipo em Figma e definição dos estados da experiência.</p></div>
+      <div class="block"><h3>Processo</h3><ul><li>Mapeei a jornada de busca e os momentos de frustração.</li><li>Desenhei busca em linguagem natural e recomendações com justificativa.</li><li>Cuidei dos estados: carregando, sem resultado, erro, resultado personalizado.</li></ul></div>
+      <div class="block full"><h3>Solução</h3><p>Busca que entende linguagem natural, filtros inteligentes e recomendações com justificativa transparente. Transparência vira confiança.</p></div>
+      <div class="block full"><h3>Reflexão</h3><p>Explicar o porquê da recomendação diferencia personalização útil de sugestão aleatória.</p></div>
+    </div>
+  </article>
+
+</main>
+
+<!-- SKILLS -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-label">Competências</div>
+    <div class="skillgroup">
+      <h4>Design & UX</h4>
+      <div class="chips">
+        <span class="chip">UX for AI</span><span class="chip">Design de Interação</span><span class="chip">Discovery e Delivery</span><span class="chip">Pesquisa qualitativa e quantitativa</span><span class="chip">Entrevistas</span><span class="chip">Jornadas do usuário</span><span class="chip">Prototipação de alta fidelidade</span><span class="chip">Design System</span><span class="chip">Hierarquia visual</span><span class="chip">Tipografia</span><span class="chip">Acessibilidade (WCAG)</span><span class="chip">Usabilidade</span>
+      </div>
+    </div>
+    <div class="skillgroup">
+      <h4>Ferramentas</h4>
+      <div class="chips">
+        <span class="chip">Figma</span><span class="chip">Componentes · Auto layout · Variáveis</span><span class="chip">Plugins de IA generativa</span><span class="chip">Claude</span><span class="chip">ChatGPT</span>
+      </div>
+    </div>
+    <div class="skillgroup">
+      <h4>Dados & Métricas</h4>
+      <div class="chips">
+        <span class="chip">Teste de usabilidade</span><span class="chip">NPS</span><span class="chip">CSAT</span><span class="chip">Google Analytics 4</span><span class="chip">SQL</span><span class="chip">Prompt Engineering</span>
+      </div>
+    </div>
+    <p class="note">Mantenha nos chips apenas o que você de fato pratica. Remova qualquer item que não saiba defender numa entrevista.</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="section-label" style="text-align:center;">Vamos conversar</div>
+    <h2 class="display">Experiências com IA que as pessoas confiam.</h2>
+    <p>Disponível para oportunidades remotas em Product Design e UX for AI.</p>
+    <div class="contact">
+      <a href="mailto:analidia33alr@gmail.com">✉ analidia33alr@gmail.com</a>
+      <a href="https://www.linkedin.com/in/lidia-rodrigues-847426268" target="_blank" rel="noopener">in LinkedIn</a>
+    </div>
+    <p class="note">Projetos conceituais (self-initiated), criados para fins de estudo e demonstração de processo de design.</p>
+  </div>
+</footer>
+
+</body>
+</html>
